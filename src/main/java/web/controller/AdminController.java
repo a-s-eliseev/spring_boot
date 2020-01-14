@@ -4,14 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import web.model.Role;
+
 import web.model.User;
 import web.service.RoleService;
 import web.service.UserService;
 import web.service.UtilService;
 
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class AdminController {
@@ -25,8 +24,9 @@ public class AdminController {
     }
 
     @GetMapping(value = "/admin")
-    public String listUsers(ModelMap modelMap) {
+    public String listUsers(ModelMap modelMap, Model model) {
         List<User> users = userService.listUsers();
+        model.addAttribute("user", new User());
         modelMap.put("users", users);
         return "index";
     }
@@ -52,6 +52,10 @@ public class AdminController {
     @GetMapping(value = "/admin/editUser")
     public String editUserGet(@RequestParam(value = "id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
+//        Set<Role> userRoles = user.getRoles();
+//        List<Role> listRoles = roleService.getAllRoles();
+//        modelMap.put("userRoles", userRoles);
+//        modelMap.put("listRoles", listRoles);
         modelMap.put("user", user);
         return "editUser";
     }
