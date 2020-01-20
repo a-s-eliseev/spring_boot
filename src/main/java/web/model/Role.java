@@ -16,7 +16,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "roles")
     @JsonBackReference
     private Set<User> users;
 

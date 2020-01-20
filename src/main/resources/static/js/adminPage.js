@@ -70,6 +70,7 @@ $(document).ready(function() {
             data: JSON.stringify(formData),
             dataType: 'json',
         });
+        window.location.reload();
     });
 
     $(document).on("click", ".btnEdit", function (e) {
@@ -85,6 +86,15 @@ $(document).ready(function() {
                 $.each(result, function (key, value) {
                     username = result.username;
                     password = result.password;
+
+                    $.each(result['roles'], function (key, value) {
+                        if(value.name == "ROLE_USER") {
+                            $("input[name=roleUser]").attr("checked","checked");
+                        };
+                        if(value.name == "ROLE_ADMIN") {
+                            $("input[name=roleAdmin]").attr("checked","checked");
+                        };
+                    });
                     $("#id").val(id);
                     $("#username").val(username);
                     $("#password").val(password);
@@ -100,10 +110,32 @@ $(document).ready(function() {
     $("#customizedForm").submit(function (event) {
         event.preventDefault();
 
+        let roleUser;
+        let roleAdmin;
+
+        if ($('#role1').is(':checked')){
+            roleUser = {
+                id: "1",
+                name: "ROLE_USER"
+            }
+        } else {
+            roleUser = {}
+        }
+
+        if ($('#role').is(':checked')){
+            roleAdmin = {
+                id: "2",
+                name: "ROLE_ADMIN"
+            }
+        } else {
+            roleAdmin = {}
+        }
+
         let formDataPatch = {
             id: $("#id").val(),
             username: $("#username").val(),
             password: $("#password").val(),
+            roles: [roleUser, roleAdmin],
         };
 
         $.ajax({
@@ -113,6 +145,5 @@ $(document).ready(function() {
             data: JSON.stringify(formDataPatch),
             dataType: 'json',
         });
-        location.reload();
     });
 });

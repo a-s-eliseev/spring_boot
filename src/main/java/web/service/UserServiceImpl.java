@@ -67,6 +67,17 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void editUser(User user) {
+//        Set<Role> roles = user.getRoles();
+//        user.setRoles(null);
+//        for (Role role : roles) {
+//            if ("ROLE_ADMIN".equals(role.getName())) {
+//                user.setRoles(Collections.singleton(roleService.getRole(2L)));
+//            }
+//            if ("ROLE_USER".equals(role.getName())) {
+//                user.setRoles(Collections.singleton(roleService.getRole(1L)));
+//            }
+//        }
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.editUser(user);
     }
