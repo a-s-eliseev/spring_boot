@@ -1,6 +1,7 @@
 package web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,7 @@ import web.config.handler.LoginSuccessHandler;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -44,9 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
+                .antMatchers("/css/**", "/js/**").permitAll()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/admin", "/admin/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/hello").access("hasAnyRole('ROLE_USER')").anyRequest().authenticated();
+                .antMatchers("/userPage").access("hasAnyRole('ROLE_USER')").anyRequest().authenticated();
     }
 
     @Bean

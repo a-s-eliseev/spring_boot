@@ -32,6 +32,9 @@
             <tr>
                 <th>Roles: </th>
                 <td>
+<!--                    <div th:each="role : ${listRoles}">-->
+<!--                       <input type="checkbox" th:field="*{roles}" th:value="${role}" th:text="${role.name}"/>-->
+<!--                    </div>-->
                     <input type="checkbox" name="role" value="ROLE_USER"/>ROLE_USER<br>
                     <input type="checkbox" name="role" value="ROLE_ADMIN"/>ROLE_ADMIN
                 </td>
