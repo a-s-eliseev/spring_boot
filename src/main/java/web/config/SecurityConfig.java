@@ -46,10 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
+                .antMatchers("/css/**", "/js/**").permitAll()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/admin", "/admin/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/hello").access("hasAnyRole('ROLE_USER')").anyRequest().authenticated();
+                .antMatchers("/userPage").access("hasAnyRole('ROLE_USER')").anyRequest().authenticated();
     }
 
     @Bean

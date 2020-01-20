@@ -4,28 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <title>User page</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link href="../static/css/adminPanel.css" th:href="@{/css/adminPanel.css}" rel="stylesheet" />
 
-    <title>User page</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-    <h4><a href="#">Project name</a></h4>
-    <a href="/logout">Logout</a>
+    <h4><a class="text-secondary" href="#">Project name</a></h4>
+    <a class="text-secondary" href="/logout">Logout</a>
 </nav>
+
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-2 mt-5 d-md-block sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link list-group-item" th:href="@{'/admin'}">Admin</a>
+                        <a class="nav-link list-group-item" th:href="@{'/adminPage'}">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link list-group-item active" th:href="@{'/hello'}">User</a>
+                        <a class="nav-link list-group-item active" th:href="@{'/userPage'}">User</a>
                     </li>
                 </ul>
             </div>
@@ -37,6 +38,7 @@
         </main>
     </div>
 </div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
