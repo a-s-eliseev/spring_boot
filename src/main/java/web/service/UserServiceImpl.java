@@ -52,22 +52,21 @@ public class UserServiceImpl implements UserService {
 
         user.setRoles(Collections.singleton(roleService.getRole(1L)));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.addUser(user);
-        return true;
+        return userDao.addUser(user);
     }
 
     @Transactional
     @Override
-    public void deleteUser(Long id) {
+    public boolean deleteUser(Long id) {
         User user = userDao.getUserById(id);
         user.setRoles(null);
-        userDao.deleteUser(user);
+        return userDao.deleteUser(user);
     }
 
     @Transactional
     @Override
-    public void editUser(User user) {
+    public boolean editUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.editUser(user);
+        return userDao.editUser(user);
     }
 }

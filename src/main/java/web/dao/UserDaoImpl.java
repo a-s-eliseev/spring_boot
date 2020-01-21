@@ -37,17 +37,20 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void addUser(User user) {
+    public boolean addUser(User user) {
         entityManager.merge(user);
+        return true;
     }
 
     @Override
-    public void deleteUser(User user) {
+    public boolean deleteUser(User user) {
         entityManager.remove(user);
+        return true;
     }
 
     @Override
-    public void editUser(User user) {
+    public boolean editUser(User user) {
         entityManager.merge(user);
+        return true;
     }
 }

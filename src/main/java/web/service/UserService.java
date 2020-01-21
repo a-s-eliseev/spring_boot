@@ -9,6 +9,6 @@ public interface UserService {
     User getUserById(Long id);
     User getUserByUsername(String username);
     boolean addUser(User user);
-    void deleteUser(Long id);
-    void editUser(User user);
+    boolean deleteUser(Long id);
+    boolean editUser(User user);
 }
