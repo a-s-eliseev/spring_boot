@@ -70,6 +70,7 @@ $(document).ready(function() {
             data: JSON.stringify(formData),
             dataType: 'json',
         });
+
         window.location.reload();
     });
 
@@ -105,6 +106,7 @@ $(document).ready(function() {
                 console.log("ERROR: ", e);
             }
         });
+
     });
 
     $("#customizedForm").submit(function (event) {
@@ -145,5 +147,6 @@ $(document).ready(function() {
             data: JSON.stringify(formDataPatch),
             dataType: 'json',
         });
+        window.location.reload();
     });
 });
